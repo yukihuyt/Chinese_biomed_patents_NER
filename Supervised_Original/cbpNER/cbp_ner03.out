@@ -1,0 +1,844 @@
+nohup: ignoring input
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+
+Get the following tags in trainset: ['O', 'B-disease', 'I-disease', 'B-protein', 'I-protein', 'B-gene', 'I-gene']
+
+Parameter settings:
+ Namespace(batch_size=8, finetuning=True, hidden_size=128, load_weights=False, logdir='/data/s2071932/BertNER/cbp03', lr=5e-05, n_epochs=40, rnn_layers=1, test_batch_size=16, testing=True, testset='/local/s2071932/general_data/cbp_gold_small_v2/3/no_long_cbp_gold_v2_test.bio', top_rnns=False, trainset='/local/s2071932/general_data/cbp_gold_small_v2/3/no_long_cbp_gold_v2_train.bio', validset='/local/s2071932/general_data/cbp_gold_small_v2/3/no_long_cbp_gold_v2_dev.bio', weight_decay=0.0, weights_path='')
+
+=======================
+Training started at Sun Dec  8 20:32:10 2019
+=====sanity check======
+words: [CLS] 1 0 . 根 据 权 利 要 求 9 所 述 的 方 法 ， 其 中 所 述 a b e x i n o s t a t 或 其 盐 的 剂 量 足 以 在 个 体 中 维 持 a b e x i n o s t a t 或 其 盐 的 有 效 血 楽 浓 度 至 少 连 续 约 6 小 时 至 连 续 约 8 小 时 。 [SEP]
+x: [ 101  122  121  119 3418 2945 3326 1164 6206 3724  130 2792 6835 4638
+ 3175 3791 8024 1071  704 2792 6835  143  144  147  166  151  156  157
+  161  162  143  162 2772 1071 4663 4638 1177 7030 6639  809 1762  702
+  860  704 5335 2898  143  144  147  166  151  156  157  161  162  143
+  162 2772 1071 4663 4638 3300 3126 6117 3518 3849 2428 5635 2208 6825
+ 5330 5276  127 2207 3198 5635 6825 5330 5276  129 2207 3198  511  102]
+tokens: ['[CLS]', '1', '0', '.', '根', '据', '权', '利', '要', '求', '9', '所', '述', '的', '方', '法', '，', '其', '中', '所', '述', 'a', 'b', 'e', 'x', 'i', 'n', 'o', 's', 't', 'a', 't', '或', '其', '盐', '的', '剂', '量', '足', '以', '在', '个', '体', '中', '维', '持', 'a', 'b', 'e', 'x', 'i', 'n', 'o', 's', 't', 'a', 't', '或', '其', '盐', '的', '有', '效', '血', '楽', '浓', '度', '至', '少', '连', '续', '约', '6', '小', '时', '至', '连', '续', '约', '8', '小', '时', '。', '[SEP]']
+is_heads: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+y: [0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 0]
+tags: <PAD> O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O <PAD>
+seqlen: 84
+=======================
+time: Sun Dec  8 20:32:11 2019, step: 0, loss: 2.002340793609619
+time: Sun Dec  8 20:34:22 2019, step: 100, loss: 0.15297925472259521
+time: Sun Dec  8 20:36:32 2019, step: 200, loss: 0.3013847768306732
+time: Sun Dec  8 20:38:34 2019, step: 300, loss: 0.12445808947086334
+time: Sun Dec  8 20:40:50 2019, step: 400, loss: 0.6283039450645447
+time: Sun Dec  8 20:42:59 2019, step: 500, loss: 0.09884436428546906
+time: Sun Dec  8 20:45:09 2019, step: 600, loss: 0.04561857879161835
+Finished 643 steps training at Sun Dec  8 20:46:06 2019
+
+=========eval at epoch=1=========
+Micro avg results:
+total number of example:6888
+total tp:20
+total proposed (tp+fp):60
+total positive (tp+fn):180
+precision=0.3333
+recall=0.1111
+f1=0.1667
+=======================
+Training started at Sun Dec  8 20:46:09 2019
+time: Sun Dec  8 20:46:10 2019, step: 0, loss: 0.01865122839808464
+time: Sun Dec  8 20:48:14 2019, step: 100, loss: 0.029538976028561592
+time: Sun Dec  8 20:50:30 2019, step: 200, loss: 0.016586944460868835
+time: Sun Dec  8 20:52:41 2019, step: 300, loss: 0.10232774913311005
+time: Sun Dec  8 20:54:46 2019, step: 400, loss: 0.0708366259932518
+time: Sun Dec  8 20:56:57 2019, step: 500, loss: 0.036672160029411316
+time: Sun Dec  8 20:59:10 2019, step: 600, loss: 0.045140817761421204
+Finished 643 steps training at Sun Dec  8 21:00:09 2019
+
+=========eval at epoch=2=========
+Micro avg results:
+total number of example:6888
+total tp:11
+total proposed (tp+fp):35
+total positive (tp+fn):180
+precision=0.3143
+recall=0.0611
+f1=0.1023
+=======================
+Training started at Sun Dec  8 21:00:12 2019
+time: Sun Dec  8 21:00:15 2019, step: 0, loss: 0.06006912887096405
+time: Sun Dec  8 21:02:27 2019, step: 100, loss: 0.05114993080496788
+time: Sun Dec  8 21:04:34 2019, step: 200, loss: 0.01377881783992052
+time: Sun Dec  8 21:06:44 2019, step: 300, loss: 0.05716526880860329
+time: Sun Dec  8 21:08:56 2019, step: 400, loss: 0.01617509312927723
+time: Sun Dec  8 21:11:05 2019, step: 500, loss: 0.016616646200418472
+time: Sun Dec  8 21:13:20 2019, step: 600, loss: 0.02338365465402603
+Finished 643 steps training at Sun Dec  8 21:14:13 2019
+
+=========eval at epoch=3=========
+Micro avg results:
+total number of example:6888
+total tp:43
+total proposed (tp+fp):65
+total positive (tp+fn):180
+precision=0.6615
+recall=0.2389
+f1=0.3510
+=======================
+Training started at Sun Dec  8 21:14:16 2019
+time: Sun Dec  8 21:14:17 2019, step: 0, loss: 0.12622272968292236
+time: Sun Dec  8 21:16:27 2019, step: 100, loss: 0.09842276573181152
+time: Sun Dec  8 21:18:35 2019, step: 200, loss: 0.007509635295718908
+time: Sun Dec  8 21:20:42 2019, step: 300, loss: 0.008052598685026169
+time: Sun Dec  8 21:22:50 2019, step: 400, loss: 0.29078835248947144
+time: Sun Dec  8 21:25:04 2019, step: 500, loss: 0.08099678158760071
+time: Sun Dec  8 21:27:09 2019, step: 600, loss: 0.03301361948251724
+Finished 643 steps training at Sun Dec  8 21:28:07 2019
+
+=========eval at epoch=4=========
+Micro avg results:
+total number of example:6888
+total tp:81
+total proposed (tp+fp):178
+total positive (tp+fn):180
+precision=0.4551
+recall=0.4500
+f1=0.4525
+=======================
+Training started at Sun Dec  8 21:28:11 2019
+time: Sun Dec  8 21:28:12 2019, step: 0, loss: 0.020557032898068428
+time: Sun Dec  8 21:30:21 2019, step: 100, loss: 0.05069972574710846
+time: Sun Dec  8 21:32:36 2019, step: 200, loss: 0.027584373950958252
+time: Sun Dec  8 21:34:49 2019, step: 300, loss: 0.019756637513637543
+time: Sun Dec  8 21:37:03 2019, step: 400, loss: 0.00144542648922652
+time: Sun Dec  8 21:39:15 2019, step: 500, loss: 0.025043029338121414
+time: Sun Dec  8 21:41:25 2019, step: 600, loss: 0.0006365028093568981
+Finished 643 steps training at Sun Dec  8 21:42:17 2019
+
+=========eval at epoch=5=========
+Micro avg results:
+total number of example:6888
+total tp:74
+total proposed (tp+fp):151
+total positive (tp+fn):180
+precision=0.4901
+recall=0.4111
+f1=0.4471
+=======================
+Training started at Sun Dec  8 21:42:20 2019
+time: Sun Dec  8 21:42:22 2019, step: 0, loss: 0.011070297099649906
+time: Sun Dec  8 21:44:27 2019, step: 100, loss: 0.012095127254724503
+time: Sun Dec  8 21:46:43 2019, step: 200, loss: 0.07128522545099258
+time: Sun Dec  8 21:48:56 2019, step: 300, loss: 0.011870337650179863
+time: Sun Dec  8 21:51:01 2019, step: 400, loss: 0.023981256410479546
+time: Sun Dec  8 21:53:11 2019, step: 500, loss: 0.005329097621142864
+time: Sun Dec  8 21:55:24 2019, step: 600, loss: 0.006647574715316296
+Finished 643 steps training at Sun Dec  8 21:56:24 2019
+
+=========eval at epoch=6=========
+Micro avg results:
+total number of example:6888
+total tp:35
+total proposed (tp+fp):111
+total positive (tp+fn):180
+precision=0.3153
+recall=0.1944
+f1=0.2405
+=======================
+Training started at Sun Dec  8 21:56:27 2019
+time: Sun Dec  8 21:56:28 2019, step: 0, loss: 0.0028021037578582764
+time: Sun Dec  8 21:58:40 2019, step: 100, loss: 0.0063690603710711
+time: Sun Dec  8 22:00:50 2019, step: 200, loss: 0.010354314930737019
+time: Sun Dec  8 22:03:03 2019, step: 300, loss: 0.012088826857507229
+time: Sun Dec  8 22:05:14 2019, step: 400, loss: 0.03248266875743866
+time: Sun Dec  8 22:07:21 2019, step: 500, loss: 0.0005360104260034859
+time: Sun Dec  8 22:09:33 2019, step: 600, loss: 0.017686637118458748
+Finished 643 steps training at Sun Dec  8 22:10:27 2019
+
+=========eval at epoch=7=========
+Micro avg results:
+total number of example:6888
+total tp:46
+total proposed (tp+fp):154
+total positive (tp+fn):180
+precision=0.2987
+recall=0.2556
+f1=0.2754
+=======================
+Training started at Sun Dec  8 22:10:30 2019
+time: Sun Dec  8 22:10:32 2019, step: 0, loss: 0.04506758600473404
+time: Sun Dec  8 22:12:48 2019, step: 100, loss: 0.0049325525760650635
+time: Sun Dec  8 22:14:55 2019, step: 200, loss: 0.0001245824823854491
+time: Sun Dec  8 22:17:04 2019, step: 300, loss: 0.010209226049482822
+time: Sun Dec  8 22:19:19 2019, step: 400, loss: 0.0034981248900294304
+time: Sun Dec  8 22:21:27 2019, step: 500, loss: 0.00228541879914701
+time: Sun Dec  8 22:23:36 2019, step: 600, loss: 0.009720533154904842
+Finished 643 steps training at Sun Dec  8 22:24:31 2019
+
+=========eval at epoch=8=========
+Micro avg results:
+total number of example:6888
+total tp:83
+total proposed (tp+fp):178
+total positive (tp+fn):180
+precision=0.4663
+recall=0.4611
+f1=0.4637
+=======================
+Training started at Sun Dec  8 22:24:34 2019
+time: Sun Dec  8 22:24:35 2019, step: 0, loss: 0.0037961388006806374
+time: Sun Dec  8 22:26:43 2019, step: 100, loss: 0.07244951277971268
+time: Sun Dec  8 22:28:49 2019, step: 200, loss: 0.018650969490408897
+time: Sun Dec  8 22:30:57 2019, step: 300, loss: 0.20367039740085602
+time: Sun Dec  8 22:33:12 2019, step: 400, loss: 0.016938624903559685
+time: Sun Dec  8 22:35:20 2019, step: 500, loss: 0.010635210201144218
+time: Sun Dec  8 22:37:38 2019, step: 600, loss: 0.0004078430065419525
+Finished 643 steps training at Sun Dec  8 22:38:33 2019
+
+=========eval at epoch=9=========
+Micro avg results:
+total number of example:6888
+total tp:55
+total proposed (tp+fp):98
+total positive (tp+fn):180
+precision=0.5612
+recall=0.3056
+f1=0.3957
+=======================
+Training started at Sun Dec  8 22:38:36 2019
+time: Sun Dec  8 22:38:37 2019, step: 0, loss: 0.00023700120800640434
+time: Sun Dec  8 22:40:51 2019, step: 100, loss: 0.0006280690431594849
+time: Sun Dec  8 22:42:50 2019, step: 200, loss: 0.010168629698455334
+time: Sun Dec  8 22:45:06 2019, step: 300, loss: 0.06005098298192024
+time: Sun Dec  8 22:47:18 2019, step: 400, loss: 0.015165307559072971
+time: Sun Dec  8 22:49:28 2019, step: 500, loss: 0.011210606433451176
+time: Sun Dec  8 22:51:37 2019, step: 600, loss: 0.03915455564856529
+Finished 643 steps training at Sun Dec  8 22:52:32 2019
+
+=========eval at epoch=10=========
+Micro avg results:
+total number of example:6888
+total tp:35
+total proposed (tp+fp):83
+total positive (tp+fn):180
+precision=0.4217
+recall=0.1944
+f1=0.2662
+=======================
+Training started at Sun Dec  8 22:52:35 2019
+time: Sun Dec  8 22:52:37 2019, step: 0, loss: 0.00044178555253893137
+time: Sun Dec  8 22:54:47 2019, step: 100, loss: 0.003920417744666338
+time: Sun Dec  8 22:56:55 2019, step: 200, loss: 4.9672653403831646e-05
+time: Sun Dec  8 22:59:00 2019, step: 300, loss: 0.04951874911785126
+time: Sun Dec  8 23:01:09 2019, step: 400, loss: 0.012304187752306461
+time: Sun Dec  8 23:03:20 2019, step: 500, loss: 0.04180489853024483
+time: Sun Dec  8 23:05:24 2019, step: 600, loss: 0.0091028967872262
+Finished 643 steps training at Sun Dec  8 23:06:19 2019
+
+=========eval at epoch=11=========
+Micro avg results:
+total number of example:6888
+total tp:44
+total proposed (tp+fp):102
+total positive (tp+fn):180
+precision=0.4314
+recall=0.2444
+f1=0.3121
+=======================
+Training started at Sun Dec  8 23:06:22 2019
+time: Sun Dec  8 23:06:23 2019, step: 0, loss: 0.0006860510329715908
+time: Sun Dec  8 23:08:30 2019, step: 100, loss: 0.053909529000520706
+time: Sun Dec  8 23:10:42 2019, step: 200, loss: 0.0006928573711775243
+time: Sun Dec  8 23:12:52 2019, step: 300, loss: 0.008014466613531113
+time: Sun Dec  8 23:15:08 2019, step: 400, loss: 0.005633202381432056
+time: Sun Dec  8 23:17:09 2019, step: 500, loss: 0.03237443044781685
+time: Sun Dec  8 23:19:23 2019, step: 600, loss: 0.005076725967228413
+Finished 643 steps training at Sun Dec  8 23:20:15 2019
+
+=========eval at epoch=12=========
+Micro avg results:
+total number of example:6888
+total tp:36
+total proposed (tp+fp):109
+total positive (tp+fn):180
+precision=0.3303
+recall=0.2000
+f1=0.2491
+=======================
+Training started at Sun Dec  8 23:20:18 2019
+time: Sun Dec  8 23:20:20 2019, step: 0, loss: 0.0008535797824151814
+time: Sun Dec  8 23:22:27 2019, step: 100, loss: 0.0019521396607160568
+time: Sun Dec  8 23:24:43 2019, step: 200, loss: 0.0007597156800329685
+time: Sun Dec  8 23:26:52 2019, step: 300, loss: 0.11079409718513489
+time: Sun Dec  8 23:28:54 2019, step: 400, loss: 0.0011076766531914473
+time: Sun Dec  8 23:31:03 2019, step: 500, loss: 0.013966762460768223
+time: Sun Dec  8 23:33:06 2019, step: 600, loss: 0.004288230091333389
+Finished 643 steps training at Sun Dec  8 23:34:02 2019
+
+=========eval at epoch=13=========
+Micro avg results:
+total number of example:6888
+total tp:29
+total proposed (tp+fp):88
+total positive (tp+fn):180
+precision=0.3295
+recall=0.1611
+f1=0.2164
+=======================
+Training started at Sun Dec  8 23:34:05 2019
+time: Sun Dec  8 23:34:06 2019, step: 0, loss: 0.0002340892533538863
+time: Sun Dec  8 23:36:21 2019, step: 100, loss: 0.06801756471395493
+time: Sun Dec  8 23:38:26 2019, step: 200, loss: 0.0274752676486969
+time: Sun Dec  8 23:40:37 2019, step: 300, loss: 0.002514383988454938
+time: Sun Dec  8 23:42:53 2019, step: 400, loss: 0.0323711559176445
+time: Sun Dec  8 23:45:04 2019, step: 500, loss: 0.01068284921348095
+time: Sun Dec  8 23:47:19 2019, step: 600, loss: 0.0007733281818218529
+Finished 643 steps training at Sun Dec  8 23:48:11 2019
+
+=========eval at epoch=14=========
+Micro avg results:
+total number of example:6888
+total tp:24
+total proposed (tp+fp):64
+total positive (tp+fn):180
+precision=0.3750
+recall=0.1333
+f1=0.1967
+=======================
+Training started at Sun Dec  8 23:48:13 2019
+time: Sun Dec  8 23:48:16 2019, step: 0, loss: 0.02861308492720127
+time: Sun Dec  8 23:50:25 2019, step: 100, loss: 0.00036427832674235106
+time: Sun Dec  8 23:52:33 2019, step: 200, loss: 0.0002036500081885606
+time: Sun Dec  8 23:54:46 2019, step: 300, loss: 0.00021512844250537455
+time: Sun Dec  8 23:56:55 2019, step: 400, loss: 0.014768480323255062
+time: Sun Dec  8 23:59:00 2019, step: 500, loss: 0.03656306862831116
+time: Mon Dec  9 00:01:10 2019, step: 600, loss: 0.0002450949396006763
+Finished 643 steps training at Mon Dec  9 00:02:05 2019
+
+=========eval at epoch=15=========
+Micro avg results:
+total number of example:6888
+total tp:35
+total proposed (tp+fp):109
+total positive (tp+fn):180
+precision=0.3211
+recall=0.1944
+f1=0.2422
+=======================
+Training started at Mon Dec  9 00:02:08 2019
+time: Mon Dec  9 00:02:10 2019, step: 0, loss: 0.003957156557589769
+time: Mon Dec  9 00:04:21 2019, step: 100, loss: 0.0033978072460740805
+time: Mon Dec  9 00:06:25 2019, step: 200, loss: 0.007592099718749523
+time: Mon Dec  9 00:08:32 2019, step: 300, loss: 0.12009935081005096
+time: Mon Dec  9 00:10:43 2019, step: 400, loss: 0.00012406909081619233
+time: Mon Dec  9 00:12:49 2019, step: 500, loss: 0.013409595936536789
+time: Mon Dec  9 00:15:01 2019, step: 600, loss: 9.332441550213844e-05
+Finished 643 steps training at Mon Dec  9 00:15:57 2019
+
+=========eval at epoch=16=========
+Micro avg results:
+total number of example:6888
+total tp:83
+total proposed (tp+fp):207
+total positive (tp+fn):180
+precision=0.4010
+recall=0.4611
+f1=0.4289
+=======================
+Training started at Mon Dec  9 00:16:00 2019
+time: Mon Dec  9 00:16:01 2019, step: 0, loss: 0.001001890515908599
+time: Mon Dec  9 00:18:00 2019, step: 100, loss: 0.0009007850894704461
+time: Mon Dec  9 00:20:09 2019, step: 200, loss: 0.0013824308989569545
+time: Mon Dec  9 00:22:24 2019, step: 300, loss: 0.015680987387895584
+time: Mon Dec  9 00:24:28 2019, step: 400, loss: 0.009273461997509003
+time: Mon Dec  9 00:26:41 2019, step: 500, loss: 0.00022731334320269525
+time: Mon Dec  9 00:28:50 2019, step: 600, loss: 0.01916567049920559
+Finished 643 steps training at Mon Dec  9 00:29:45 2019
+
+=========eval at epoch=17=========
+Micro avg results:
+total number of example:6888
+total tp:58
+total proposed (tp+fp):85
+total positive (tp+fn):180
+precision=0.6824
+recall=0.3222
+f1=0.4377
+=======================
+Training started at Mon Dec  9 00:29:48 2019
+time: Mon Dec  9 00:29:50 2019, step: 0, loss: 0.005137423984706402
+time: Mon Dec  9 00:32:01 2019, step: 100, loss: 0.005766775459051132
+time: Mon Dec  9 00:34:14 2019, step: 200, loss: 0.006065418478101492
+time: Mon Dec  9 00:36:22 2019, step: 300, loss: 0.0008901421097107232
+time: Mon Dec  9 00:38:31 2019, step: 400, loss: 0.013597224839031696
+time: Mon Dec  9 00:40:38 2019, step: 500, loss: 0.0003125484217889607
+time: Mon Dec  9 00:42:44 2019, step: 600, loss: 0.0003432249359320849
+Finished 643 steps training at Mon Dec  9 00:43:36 2019
+
+=========eval at epoch=18=========
+Micro avg results:
+total number of example:6888
+total tp:62
+total proposed (tp+fp):139
+total positive (tp+fn):180
+precision=0.4460
+recall=0.3444
+f1=0.3887
+=======================
+Training started at Mon Dec  9 00:43:39 2019
+time: Mon Dec  9 00:43:40 2019, step: 0, loss: 0.012226429767906666
+time: Mon Dec  9 00:45:52 2019, step: 100, loss: 0.008211114443838596
+time: Mon Dec  9 00:48:04 2019, step: 200, loss: 0.028100602328777313
+time: Mon Dec  9 00:50:15 2019, step: 300, loss: 0.0032600974664092064
+time: Mon Dec  9 00:52:19 2019, step: 400, loss: 0.0004667294560931623
+time: Mon Dec  9 00:54:31 2019, step: 500, loss: 0.027688344940543175
+time: Mon Dec  9 00:56:38 2019, step: 600, loss: 0.0014079923275858164
+Finished 643 steps training at Mon Dec  9 00:57:32 2019
+
+=========eval at epoch=19=========
+Micro avg results:
+total number of example:6888
+total tp:42
+total proposed (tp+fp):120
+total positive (tp+fn):180
+precision=0.3500
+recall=0.2333
+f1=0.2800
+=======================
+Training started at Mon Dec  9 00:57:35 2019
+time: Mon Dec  9 00:57:36 2019, step: 0, loss: 0.0005692134145647287
+time: Mon Dec  9 00:59:43 2019, step: 100, loss: 0.0002748238912317902
+time: Mon Dec  9 01:01:47 2019, step: 200, loss: 0.0006446168408729136
+time: Mon Dec  9 01:03:57 2019, step: 300, loss: 0.01991162821650505
+time: Mon Dec  9 01:06:12 2019, step: 400, loss: 0.01795894280076027
+time: Mon Dec  9 01:08:12 2019, step: 500, loss: 0.0013681142590939999
+time: Mon Dec  9 01:10:29 2019, step: 600, loss: 0.0009023798047564924
+Finished 643 steps training at Mon Dec  9 01:11:30 2019
+
+=========eval at epoch=20=========
+Micro avg results:
+total number of example:6888
+total tp:48
+total proposed (tp+fp):101
+total positive (tp+fn):180
+precision=0.4752
+recall=0.2667
+f1=0.3416
+weights were saved to /data/s2071932/BertNER/cbp03/temp20.pt
+=======================
+Training started at Mon Dec  9 01:11:33 2019
+time: Mon Dec  9 01:11:34 2019, step: 0, loss: 0.00048345871618948877
+time: Mon Dec  9 01:13:49 2019, step: 100, loss: 0.0006855002138763666
+time: Mon Dec  9 01:15:53 2019, step: 200, loss: 0.009203420951962471
+time: Mon Dec  9 01:17:59 2019, step: 300, loss: 0.0006239351932890713
+time: Mon Dec  9 01:20:10 2019, step: 400, loss: 0.0014028963632881641
+time: Mon Dec  9 01:22:20 2019, step: 500, loss: 0.00396541366353631
+time: Mon Dec  9 01:24:31 2019, step: 600, loss: 0.022031478583812714
+Finished 643 steps training at Mon Dec  9 01:25:26 2019
+
+=========eval at epoch=21=========
+Micro avg results:
+total number of example:6888
+total tp:16
+total proposed (tp+fp):65
+total positive (tp+fn):180
+precision=0.2462
+recall=0.0889
+f1=0.1306
+=======================
+Training started at Mon Dec  9 01:25:29 2019
+time: Mon Dec  9 01:25:30 2019, step: 0, loss: 0.0014294860884547234
+time: Mon Dec  9 01:27:40 2019, step: 100, loss: 0.003814595751464367
+time: Mon Dec  9 01:29:46 2019, step: 200, loss: 0.00044539858936332166
+time: Mon Dec  9 01:31:54 2019, step: 300, loss: 0.02109680511057377
+time: Mon Dec  9 01:34:09 2019, step: 400, loss: 0.009680576622486115
+time: Mon Dec  9 01:36:21 2019, step: 500, loss: 0.00045658371527679265
+time: Mon Dec  9 01:38:28 2019, step: 600, loss: 0.001819155178964138
+Finished 643 steps training at Mon Dec  9 01:39:22 2019
+
+=========eval at epoch=22=========
+Micro avg results:
+total number of example:6888
+total tp:27
+total proposed (tp+fp):130
+total positive (tp+fn):180
+precision=0.2077
+recall=0.1500
+f1=0.1742
+=======================
+Training started at Mon Dec  9 01:39:25 2019
+time: Mon Dec  9 01:39:27 2019, step: 0, loss: 0.0005426691495813429
+time: Mon Dec  9 01:41:37 2019, step: 100, loss: 0.0008845494594424963
+time: Mon Dec  9 01:43:49 2019, step: 200, loss: 0.03573019057512283
+time: Mon Dec  9 01:45:57 2019, step: 300, loss: 0.00042506936006247997
+time: Mon Dec  9 01:48:11 2019, step: 400, loss: 0.013699463568627834
+time: Mon Dec  9 01:50:27 2019, step: 500, loss: 0.012111173942685127
+time: Mon Dec  9 01:52:26 2019, step: 600, loss: 0.023147257044911385
+Finished 643 steps training at Mon Dec  9 01:53:18 2019
+
+=========eval at epoch=23=========
+Micro avg results:
+total number of example:6888
+total tp:64
+total proposed (tp+fp):170
+total positive (tp+fn):180
+precision=0.3765
+recall=0.3556
+f1=0.3657
+=======================
+Training started at Mon Dec  9 01:53:21 2019
+time: Mon Dec  9 01:53:23 2019, step: 0, loss: 0.0013060357887297869
+time: Mon Dec  9 01:55:37 2019, step: 100, loss: 9.584838699083775e-05
+time: Mon Dec  9 01:57:37 2019, step: 200, loss: 0.04812461882829666
+time: Mon Dec  9 01:59:51 2019, step: 300, loss: 7.457851461367682e-05
+time: Mon Dec  9 02:01:59 2019, step: 400, loss: 0.0005796463810838759
+time: Mon Dec  9 02:04:18 2019, step: 500, loss: 0.002851389581337571
+time: Mon Dec  9 02:06:23 2019, step: 600, loss: 0.0001383020426146686
+Finished 643 steps training at Mon Dec  9 02:07:19 2019
+
+=========eval at epoch=24=========
+Micro avg results:
+total number of example:6888
+total tp:62
+total proposed (tp+fp):122
+total positive (tp+fn):180
+precision=0.5082
+recall=0.3444
+f1=0.4106
+=======================
+Training started at Mon Dec  9 02:07:22 2019
+time: Mon Dec  9 02:07:23 2019, step: 0, loss: 0.024474266916513443
+time: Mon Dec  9 02:09:36 2019, step: 100, loss: 0.005515540484338999
+time: Mon Dec  9 02:11:44 2019, step: 200, loss: 0.015083188191056252
+time: Mon Dec  9 02:13:52 2019, step: 300, loss: 5.1505638111848384e-05
+time: Mon Dec  9 02:16:07 2019, step: 400, loss: 0.01077245082706213
+time: Mon Dec  9 02:18:12 2019, step: 500, loss: 0.0016384124755859375
+time: Mon Dec  9 02:20:13 2019, step: 600, loss: 0.015505620278418064
+Finished 643 steps training at Mon Dec  9 02:21:05 2019
+
+=========eval at epoch=25=========
+Micro avg results:
+total number of example:6888
+total tp:30
+total proposed (tp+fp):94
+total positive (tp+fn):180
+precision=0.3191
+recall=0.1667
+f1=0.2190
+=======================
+Training started at Mon Dec  9 02:21:08 2019
+time: Mon Dec  9 02:21:10 2019, step: 0, loss: 0.00041662383591756225
+time: Mon Dec  9 02:23:19 2019, step: 100, loss: 0.0027348569128662348
+time: Mon Dec  9 02:25:32 2019, step: 200, loss: 0.030398767441511154
+time: Mon Dec  9 02:27:49 2019, step: 300, loss: 0.0001270990469492972
+time: Mon Dec  9 02:30:00 2019, step: 400, loss: 0.001580279553309083
+time: Mon Dec  9 02:32:12 2019, step: 500, loss: 0.023339342325925827
+time: Mon Dec  9 02:34:15 2019, step: 600, loss: 0.0011041192337870598
+Finished 643 steps training at Mon Dec  9 02:35:09 2019
+
+=========eval at epoch=26=========
+Micro avg results:
+total number of example:6888
+total tp:29
+total proposed (tp+fp):83
+total positive (tp+fn):180
+precision=0.3494
+recall=0.1611
+f1=0.2205
+=======================
+Training started at Mon Dec  9 02:35:12 2019
+time: Mon Dec  9 02:35:14 2019, step: 0, loss: 9.749465971253812e-05
+time: Mon Dec  9 02:37:23 2019, step: 100, loss: 8.242935291491449e-05
+time: Mon Dec  9 02:39:25 2019, step: 200, loss: 9.1080270067323e-05
+time: Mon Dec  9 02:41:33 2019, step: 300, loss: 0.009036327712237835
+time: Mon Dec  9 02:43:41 2019, step: 400, loss: 0.00033888930920511484
+time: Mon Dec  9 02:45:52 2019, step: 500, loss: 0.0049772425554692745
+time: Mon Dec  9 02:47:59 2019, step: 600, loss: 0.0002579490246716887
+Finished 643 steps training at Mon Dec  9 02:48:55 2019
+
+=========eval at epoch=27=========
+Micro avg results:
+total number of example:6888
+total tp:48
+total proposed (tp+fp):91
+total positive (tp+fn):180
+precision=0.5275
+recall=0.2667
+f1=0.3542
+=======================
+Training started at Mon Dec  9 02:48:57 2019
+time: Mon Dec  9 02:48:59 2019, step: 0, loss: 3.534965435392223e-05
+time: Mon Dec  9 02:51:07 2019, step: 100, loss: 3.9781069062883034e-05
+time: Mon Dec  9 02:53:13 2019, step: 200, loss: 0.00019283565052319318
+time: Mon Dec  9 02:55:22 2019, step: 300, loss: 0.0001387573138345033
+time: Mon Dec  9 02:57:40 2019, step: 400, loss: 0.0300593338906765
+time: Mon Dec  9 02:59:52 2019, step: 500, loss: 0.00015345575229730457
+time: Mon Dec  9 03:02:08 2019, step: 600, loss: 0.0019739042036235332
+Finished 643 steps training at Mon Dec  9 03:03:02 2019
+
+=========eval at epoch=28=========
+Micro avg results:
+total number of example:6888
+total tp:31
+total proposed (tp+fp):89
+total positive (tp+fn):180
+precision=0.3483
+recall=0.1722
+f1=0.2305
+=======================
+Training started at Mon Dec  9 03:03:05 2019
+time: Mon Dec  9 03:03:07 2019, step: 0, loss: 0.0022147614508867264
+time: Mon Dec  9 03:05:17 2019, step: 100, loss: 0.008242476731538773
+time: Mon Dec  9 03:07:22 2019, step: 200, loss: 0.0001606280420674011
+time: Mon Dec  9 03:09:40 2019, step: 300, loss: 0.1011991947889328
+time: Mon Dec  9 03:11:55 2019, step: 400, loss: 0.012407614849507809
+time: Mon Dec  9 03:14:01 2019, step: 500, loss: 0.003766530891880393
+time: Mon Dec  9 03:16:07 2019, step: 600, loss: 8.115092350635678e-05
+Finished 643 steps training at Mon Dec  9 03:16:57 2019
+
+=========eval at epoch=29=========
+Micro avg results:
+total number of example:6888
+total tp:46
+total proposed (tp+fp):153
+total positive (tp+fn):180
+precision=0.3007
+recall=0.2556
+f1=0.2763
+=======================
+Training started at Mon Dec  9 03:17:00 2019
+time: Mon Dec  9 03:17:02 2019, step: 0, loss: 0.00010219269461231306
+time: Mon Dec  9 03:18:59 2019, step: 100, loss: 5.622922253678553e-05
+time: Mon Dec  9 03:21:12 2019, step: 200, loss: 0.0007396287401206791
+time: Mon Dec  9 03:23:26 2019, step: 300, loss: 0.01120616216212511
+time: Mon Dec  9 03:25:34 2019, step: 400, loss: 0.009082138538360596
+time: Mon Dec  9 03:27:46 2019, step: 500, loss: 2.40236877289135e-05
+time: Mon Dec  9 03:30:00 2019, step: 600, loss: 0.008629487827420235
+Finished 643 steps training at Mon Dec  9 03:30:54 2019
+
+=========eval at epoch=30=========
+Micro avg results:
+total number of example:6888
+total tp:56
+total proposed (tp+fp):160
+total positive (tp+fn):180
+precision=0.3500
+recall=0.3111
+f1=0.3294
+=======================
+Training started at Mon Dec  9 03:30:57 2019
+time: Mon Dec  9 03:30:58 2019, step: 0, loss: 0.0016203518025577068
+time: Mon Dec  9 03:33:07 2019, step: 100, loss: 0.0026055127382278442
+time: Mon Dec  9 03:35:17 2019, step: 200, loss: 0.0021639098413288593
+time: Mon Dec  9 03:37:15 2019, step: 300, loss: 0.005000506527721882
+time: Mon Dec  9 03:39:28 2019, step: 400, loss: 0.00040176554466597736
+time: Mon Dec  9 03:41:37 2019, step: 500, loss: 0.0006947797373868525
+time: Mon Dec  9 03:43:43 2019, step: 600, loss: 0.0162028931081295
+Finished 643 steps training at Mon Dec  9 03:44:39 2019
+
+=========eval at epoch=31=========
+Micro avg results:
+total number of example:6888
+total tp:55
+total proposed (tp+fp):185
+total positive (tp+fn):180
+precision=0.2973
+recall=0.3056
+f1=0.3014
+=======================
+Training started at Mon Dec  9 03:44:42 2019
+time: Mon Dec  9 03:44:43 2019, step: 0, loss: 0.00042731614666990936
+time: Mon Dec  9 03:46:54 2019, step: 100, loss: 0.0008646822534501553
+time: Mon Dec  9 03:48:59 2019, step: 200, loss: 0.0008790916763246059
+time: Mon Dec  9 03:51:12 2019, step: 300, loss: 0.012130887247622013
+time: Mon Dec  9 03:53:23 2019, step: 400, loss: 0.00586915947496891
+time: Mon Dec  9 03:55:23 2019, step: 500, loss: 0.0011804274981841445
+time: Mon Dec  9 03:57:33 2019, step: 600, loss: 0.0022971162106841803
+Finished 643 steps training at Mon Dec  9 03:58:30 2019
+
+=========eval at epoch=32=========
+Micro avg results:
+total number of example:6888
+total tp:46
+total proposed (tp+fp):122
+total positive (tp+fn):180
+precision=0.3770
+recall=0.2556
+f1=0.3046
+=======================
+Training started at Mon Dec  9 03:58:32 2019
+time: Mon Dec  9 03:58:33 2019, step: 0, loss: 0.0009530342067591846
+time: Mon Dec  9 04:00:48 2019, step: 100, loss: 0.001867914223112166
+time: Mon Dec  9 04:02:54 2019, step: 200, loss: 0.0023909355513751507
+time: Mon Dec  9 04:05:08 2019, step: 300, loss: 0.0004177996306680143
+time: Mon Dec  9 04:07:14 2019, step: 400, loss: 0.0019443113123998046
+time: Mon Dec  9 04:09:28 2019, step: 500, loss: 7.406239456031471e-05
+time: Mon Dec  9 04:11:30 2019, step: 600, loss: 0.0023976590018719435
+Finished 643 steps training at Mon Dec  9 04:12:23 2019
+
+=========eval at epoch=33=========
+Micro avg results:
+total number of example:6888
+total tp:37
+total proposed (tp+fp):131
+total positive (tp+fn):180
+precision=0.2824
+recall=0.2056
+f1=0.2379
+=======================
+Training started at Mon Dec  9 04:12:26 2019
+time: Mon Dec  9 04:12:26 2019, step: 0, loss: 0.003955980762839317
+time: Mon Dec  9 04:14:32 2019, step: 100, loss: 4.069897477165796e-05
+time: Mon Dec  9 04:16:41 2019, step: 200, loss: 0.00021357352670747787
+time: Mon Dec  9 04:18:53 2019, step: 300, loss: 0.0027072825469076633
+time: Mon Dec  9 04:21:07 2019, step: 400, loss: 0.00048213524860329926
+time: Mon Dec  9 04:23:17 2019, step: 500, loss: 0.0012879576534032822
+time: Mon Dec  9 04:25:20 2019, step: 600, loss: 0.00996877159923315
+Finished 643 steps training at Mon Dec  9 04:26:20 2019
+
+=========eval at epoch=34=========
+Micro avg results:
+total number of example:6888
+total tp:44
+total proposed (tp+fp):119
+total positive (tp+fn):180
+precision=0.3697
+recall=0.2444
+f1=0.2943
+=======================
+Training started at Mon Dec  9 04:26:22 2019
+time: Mon Dec  9 04:26:24 2019, step: 0, loss: 0.00020657709683291614
+time: Mon Dec  9 04:28:31 2019, step: 100, loss: 0.006949458736926317
+time: Mon Dec  9 04:30:31 2019, step: 200, loss: 0.0006175664602778852
+time: Mon Dec  9 04:32:40 2019, step: 300, loss: 0.00015777116641402245
+time: Mon Dec  9 04:34:47 2019, step: 400, loss: 0.0004118650103919208
+time: Mon Dec  9 04:36:56 2019, step: 500, loss: 0.0010734056122601032
+time: Mon Dec  9 04:39:04 2019, step: 600, loss: 0.00015777646331116557
+Finished 643 steps training at Mon Dec  9 04:39:59 2019
+
+=========eval at epoch=35=========
+Micro avg results:
+total number of example:6888
+total tp:45
+total proposed (tp+fp):134
+total positive (tp+fn):180
+precision=0.3358
+recall=0.2500
+f1=0.2866
+=======================
+Training started at Mon Dec  9 04:40:02 2019
+time: Mon Dec  9 04:40:04 2019, step: 0, loss: 0.001534275826998055
+time: Mon Dec  9 04:42:17 2019, step: 100, loss: 3.277183714089915e-05
+time: Mon Dec  9 04:44:25 2019, step: 200, loss: 0.012955709360539913
+time: Mon Dec  9 04:46:36 2019, step: 300, loss: 0.003774266690015793
+time: Mon Dec  9 04:48:42 2019, step: 400, loss: 0.00012020141730317846
+time: Mon Dec  9 04:50:55 2019, step: 500, loss: 0.015190615318715572
+time: Mon Dec  9 04:52:58 2019, step: 600, loss: 0.004581068176776171
+Finished 643 steps training at Mon Dec  9 04:53:54 2019
+
+=========eval at epoch=36=========
+Micro avg results:
+total number of example:6888
+total tp:40
+total proposed (tp+fp):80
+total positive (tp+fn):180
+precision=0.5000
+recall=0.2222
+f1=0.3077
+=======================
+Training started at Mon Dec  9 04:53:57 2019
+time: Mon Dec  9 04:53:58 2019, step: 0, loss: 0.005668210331350565
+time: Mon Dec  9 04:56:07 2019, step: 100, loss: 0.0003390199854038656
+time: Mon Dec  9 04:58:10 2019, step: 200, loss: 4.9214588216273114e-05
+time: Mon Dec  9 05:00:18 2019, step: 300, loss: 1.4497539268631954e-05
+time: Mon Dec  9 05:02:35 2019, step: 400, loss: 0.0022373259998857975
+time: Mon Dec  9 05:04:39 2019, step: 500, loss: 0.007066748570650816
+time: Mon Dec  9 05:06:50 2019, step: 600, loss: 0.00019095541210845113
+Finished 643 steps training at Mon Dec  9 05:07:45 2019
+
+=========eval at epoch=37=========
+Micro avg results:
+total number of example:6888
+total tp:38
+total proposed (tp+fp):119
+total positive (tp+fn):180
+precision=0.3193
+recall=0.2111
+f1=0.2542
+=======================
+Training started at Mon Dec  9 05:07:47 2019
+time: Mon Dec  9 05:07:48 2019, step: 0, loss: 6.758330709999427e-05
+time: Mon Dec  9 05:09:54 2019, step: 100, loss: 0.00012529069499578327
+time: Mon Dec  9 05:12:05 2019, step: 200, loss: 1.1697981790348422e-05
+time: Mon Dec  9 05:14:13 2019, step: 300, loss: 0.00014533473586197942
+time: Mon Dec  9 05:16:24 2019, step: 400, loss: 0.0064278775826096535
+time: Mon Dec  9 05:18:35 2019, step: 500, loss: 0.0004941575461998582
+time: Mon Dec  9 05:20:49 2019, step: 600, loss: 7.708867633482441e-05
+Finished 643 steps training at Mon Dec  9 05:21:40 2019
+
+=========eval at epoch=38=========
+Micro avg results:
+total number of example:6888
+total tp:33
+total proposed (tp+fp):101
+total positive (tp+fn):180
+precision=0.3267
+recall=0.1833
+f1=0.2349
+=======================
+Training started at Mon Dec  9 05:21:43 2019
+time: Mon Dec  9 05:21:44 2019, step: 0, loss: 9.125789074460045e-05
+time: Mon Dec  9 05:23:51 2019, step: 100, loss: 0.000177170179085806
+time: Mon Dec  9 05:25:55 2019, step: 200, loss: 0.010325387120246887
+time: Mon Dec  9 05:28:05 2019, step: 300, loss: 0.001475547906011343
+time: Mon Dec  9 05:30:15 2019, step: 400, loss: 0.0007825155043974519
+time: Mon Dec  9 05:32:21 2019, step: 500, loss: 1.2951512871950399e-05
+time: Mon Dec  9 05:34:33 2019, step: 600, loss: 0.00664468202739954
+Finished 643 steps training at Mon Dec  9 05:35:29 2019
+
+=========eval at epoch=39=========
+Micro avg results:
+total number of example:6888
+total tp:47
+total proposed (tp+fp):129
+total positive (tp+fn):180
+precision=0.3643
+recall=0.2611
+f1=0.3042
+=======================
+Training started at Mon Dec  9 05:35:31 2019
+time: Mon Dec  9 05:35:33 2019, step: 0, loss: 0.005330630112439394
+time: Mon Dec  9 05:37:42 2019, step: 100, loss: 0.0007101669325493276
+time: Mon Dec  9 05:39:52 2019, step: 200, loss: 0.0021246199030429125
+time: Mon Dec  9 05:41:55 2019, step: 300, loss: 4.28092826041393e-05
+time: Mon Dec  9 05:44:09 2019, step: 400, loss: 0.0051641096360981464
+time: Mon Dec  9 05:46:18 2019, step: 500, loss: 0.003860658500343561
+time: Mon Dec  9 05:48:32 2019, step: 600, loss: 0.0011351995635777712
+Finished 643 steps training at Mon Dec  9 05:49:25 2019
+
+=========eval at epoch=40=========
+Micro avg results:
+total number of example:6888
+total tp:25
+total proposed (tp+fp):61
+total positive (tp+fn):180
+precision=0.4098
+recall=0.1389
+f1=0.2075
+=========Testing on best model=========
+             precision    recall  f1-score   support
+
+       gene       0.14      0.09      0.11       734
+    disease       0.68      0.46      0.55       339
+    protein       0.19      0.26      0.22       156
+
+avg / total       0.29      0.21      0.24      1229
+
+Micro avg results:
+total number of example:63232
+total tp:2650
+total proposed (tp+fp):3449
+total positive (tp+fn):12705
+precision=0.7683
+recall=0.2086
+f1=0.3281
+=======================
+

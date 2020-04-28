@@ -1,0 +1,1 @@
+nohup sh ./cbp00.sh > /data/s2071932/BertNER/cbp_ner00.out 2>&1 &

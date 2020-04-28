@@ -1,0 +1,26 @@
+Train files:
+10_2015-12-30-CN105209881A-plain.txt.anns
+11_2016-07-06-CN105738526A-plain.txt.anns
+12_2016-04-13-CN105492012A-plain.txt.anns
+13_2016-04-06-CN105473735A-plain.txt.anns
+14_2017-12-19-CN107485711A-plain.txt.anns
+1_2018-10-26-CN108713143A-plain.txt.anns
+2_2016-05-25-CN105611940A-plain.txt.anns
+5_2013-03-13-CN101027556B-plain.txt.anns
+6_2018-03-02-CN107748147A-plain.txt.anns
+8_2018-11-23-CN108866199A-plain.txt.anns
+HG-1-2017-12-22-CN107496939A-plain.txt.anns
+HG-18-2017-07-07-CN106928328A-plain.txt.anns
+HG-23-2017-10-24-CN107287191A-plain.txt.anns
+HG-28-2018-09-07-CN108504617A-plain.txt.anns
+HG-31-2017-07-18-CN106957822A-plain.txt.anns
+HG-4-2017-12-01-CN107430644A-plain.txt.anns
+HG-6-2010-12-15-CN101918436A-plain.txt.anns
+HG-9-2017-04-12-CN104017020B-plain.txt.anns
+==============
+Test files:
+HG-12-2017-08-04-CN107012206A-plain.txt.anns
+4_2016-11-23-CN106163558A-plain.txt.anns
+==============
+Dev files:
+3_2014-12-24-CN104244952A-plain.txt.anns
