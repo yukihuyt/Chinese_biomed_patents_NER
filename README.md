@@ -3,7 +3,7 @@
 This repository includes the built datasets, source codes and trained models of our study **Named Entity Recognition for Chinese biomedical patents**.
 
 ## Configuration
-Enviornment files in `/env`.
+Enviornment files in `/env`.  
 Configure the python environment using:
 ```bash
 #using pip
@@ -15,7 +15,7 @@ conda env create -f ./env/cbp.yml
 ```
 
 ## Datasets
-The `/data` contains all our built datasets.
+The `/data` contains all our built datasets.  
 Detailed information see [dataset information](./data/README.md)
 
 ## Models
@@ -30,21 +30,21 @@ The directories `/Supervised_Original`, `/BERT_LM_mixed` and `/partBERT_CRF` con
 
 To make sure your configurations are sufficient and ready, you can run a demo NER experiment for only 1 epoch by simply running `demo_run.sh` of each method.
 
-**Reproduce our results**
+**Reproduce our results**  
 To reproduce our final evaluation experiments of `/Supervised_Original` and `/partBERT_CRF`, change the GPU resource related parameters of each `iter_exp.sh` file, like available GPU id and possible batch size, then simply run it. 
 
 
 For `/BERT_LM_mixed` method, first you need to download the bin files of each model in correspoding directories.
 
---Download [partHG_1epoch_bin](https://ufile.io/ijfrwomm) under `./models/partHG_1epoch`
---Download [...]() under `./models/partBC_30epochs`
---Download [...]() under `./models/final_trained` 
+* Download [partHG_1epoch_bin](https://ufile.io/ijfrwomm) under `./models/partHG_1epoch`
+* Download [...]() under `./models/partBC_30epochs`
+* Download [...]() under `./models/final_trained`  
 (Links not ready)
 
-There are 2 sub-directories under `/BERT_LM_mixed`. 
+There are 2 sub-directories under `/BERT_LM_mixed`.  
 The `/lmft_example` contains codes to fine-tune the `bert-base-chinses`, while `/ner_example` contains codes to run NER experiments using fine-tuned language models.
 
 To reproduce the evaluation results of this method, you can run the `/iter_exp_bc.sh` and `iter_exp_hg.sh`, which apply our 2 fine-tuned language models `/partBC_30epochs` and `/partHG_1epoch`, respectively. Also don't forget to customize the GPU resource related parameters in the scripts.
 
-**Run your own expriments**
+**Run your own expriments**  
 (Not finished)
