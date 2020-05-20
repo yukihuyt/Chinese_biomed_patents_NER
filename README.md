@@ -21,9 +21,9 @@ Detailed information see [dataset information](./data/README.md)
 ## Models
 Here we release 3 models generated during our experiments which you can use to either reproduce our results or run your own customized experiments.
 
-`/partHG_1epoch` is the bert-base-chinese model been fine-tuned on our large unlabeled dataset `HG` for 1 epoch, while `/partBC_30epochs` on unlabeled dataset `BC` for 30 epochs. These 2 fine-tuned lanaguage model can be used to run your customized NER experiments or be loaded to continue fine-tuning on more data/epochs.
+The `/partHG_1epoch` is the bert-base-chinese model been fine-tuned on our large unlabeled dataset `HG` for 1 epoch, while `/partBC_30epochs` on unlabeled dataset `BC` for 30 epochs. These 2 fine-tuned lanaguage model can be used to run your customized NER experiments or be loaded to continue fine-tuning on more data/epochs.
 
-`/final_trained` is the NER model trained on our whole labeled dataset `cbp_gold`, using the fine-tuned language model `/partHG_1epoch`. It is also our final selected model to generate predictions on unlabeled dataset for further analysis. This NER model is possible to be directly applied on new data to generate NER predictions.
+The `/final_trained` is the NER model trained on our whole labeled dataset `cbp_gold`, using the fine-tuned language model `/partHG_1epoch`. It is also our final selected model to generate predictions on unlabeled dataset for further analysis. This NER model is possible to be directly applied on new data to generate NER predictions.
 
 ## Run experiments
 The directories `/Supervised_Original`, `/BERT_LM_mixed` and `/partBERT_CRF` contain the source codes of corresponding training methods described in our paper.
