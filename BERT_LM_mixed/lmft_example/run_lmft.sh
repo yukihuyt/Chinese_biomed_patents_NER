@@ -1,12 +1,16 @@
-export OUT_DIR=/data/s2071932/Transformers/resources/output/lmft_BC_40/
+if [ ! -d "./output" ]; then
+    mkdir "./output"
+fi
+
+export OUT_DIR=./output/
 export SAVE_STEPS=50000
 export BATCH_SIZE=8
 export LR=5e-5
-export N_EPOCHS=40
-export TRAIN_FILE=/local/s2071932/Transformers/resources/cbp_ft_demo_train_HG.txt
-export TEST_FILE=/local/s2071932/Transformers/resources/cbp_ft_demo_test_HG.txt
+export N_EPOCHS=30
+export TRAIN_FILE=../data/path_to_unlabeled_train
+export TEST_FILE=../data/path_to_unlabeled_test
 
-CUDA_VISIBLE_DEVICES=10 python3 -u run_lm_finetuning.py \
+CUDA_VISIBLE_DEVICES=0 python3 -u run_lm_finetuning.py \
     --output_dir=$OUT_DIR \
     --model_type=bert \
     --save_steps=$SAVE_STEPS \

@@ -54,6 +54,7 @@ if __name__ == "__main__":
   print(tag_dictionary.idx2item)
 
   print (len(corpus.train))
+  print (f'Start experiment with arguments: {args}')
 
   # 5. initialize sequence tagger
   bert_default = BertEmbeddings('bert-base-chinese')
