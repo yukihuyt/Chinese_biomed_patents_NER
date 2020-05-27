@@ -10,7 +10,7 @@ Configure the python environment using:
 pip install --upgrade pip
 pip install -r ./env/cbp.txt
 
-#using conda
+#or using conda
 conda env create -f ./env/cbp.yml
 ```
 
@@ -30,21 +30,26 @@ The directories `/Supervised_Original`, `/BERT_LM_mixed` and `/partBERT_CRF` con
 
 To make sure your configurations are sufficient and ready, you can run a demo NER experiment for only 1 epoch by simply running `demo_run.sh` of each method.
 
-**Reproduce our results**  
+**Reproduce our NER results**  
 To reproduce our final evaluation experiments of `/Supervised_Original` and `/partBERT_CRF`, change the GPU resource related parameters of each `iter_exp.sh` file, like available GPU id and possible batch size, then simply run it. 
 
 
 For `/BERT_LM_mixed` method, first you need to download the bin files of each model in correspoding directories.
 
-* Download [partHG_1epoch_bin](https://ufile.io/ijfrwomm) under `./models/partHG_1epoch`
-* Download [...]() under `./models/partBC_30epochs`
-* Download [...]() under `./models/final_trained`  
-(Links not ready)
+* Download [partHG_1epoch_bin](https://ufile.io/4ub90d6l) under `./models/partHG_1epoch`
+* Download [partBC_30epochs_bin](https://ufile.io/t7qqx58r) under `./models/partBC_30epochs`
+* Download [final_trained_bin](https://ufile.io/wybcaiui) under `./models/final_trained`  
+Then rename all model bin files as `pytorch_model.bin`
 
 There are 2 sub-directories under `/BERT_LM_mixed`.  
 The `/lmft_example` contains codes to fine-tune the `bert-base-chinses`, while `/ner_example` contains codes to run NER experiments using fine-tuned language models.
 
 To reproduce the evaluation results of this method, you can run the `/iter_exp_bc.sh` and `iter_exp_hg.sh`, which apply our 2 fine-tuned language models `/partBC_30epochs` and `/partHG_1epoch`, respectively. Also don't forget to customize the GPU resource related parameters in the scripts.
 
-**Run your own expriments**  
-(Not finished)
+**Run the language model fine-tuning expriments**  
+To fine-tune the original BERT language model with your own data, change the `data_dir` parameter of `run_lmft.sh` to your data directory, then directly run this script.  
+
+To continue fine-tuning our tuned language model with more data or more epochs, change either the `data_dir` parameter to your data directory or the `num_train_epochs` parameter to your planned epochs of `run_lmft_load.sh`, then change the `model_name_or_path` parameter to the model directory you want to load from. 
+
+Also don't forget to customize the GPU resource related parameters in the scripts.
+  
