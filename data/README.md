@@ -10,7 +10,9 @@ Under the directory `cbp_gold`, there are also 5 sub-directories (from `0` to `4
 
 The `part_BC` and `part_HG` were part of both datasets, which contain 100 and 10,000 patents randomly selected from `BC` and `HG` datasets, respectively. They were processed as the suggested format for the transformers frame we applied and were finally used in our Language Model fine-tuning experiments (Mixed_LM).
 
-These unlabeled datasets can be downloaded from: (the download link will be updated after the paper anonymous review period. Please contact the paper author if the unlabeled datasets are needed for the review section.)
+Here we would not upload these unlabeled datasets since they are all relatively large and are not necessary if you just want to reproduce our NER results or use our trained models. 
 
-Detailed statistics of all our built dataset can be found in our paper.
+Detailed statistics of all our built dataset can be found in our paper.  
+
+
  
