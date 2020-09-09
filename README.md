@@ -2,6 +2,14 @@
 
 This repository includes the built datasets, source codes and trained models of our study **Named Entity Recognition for Chinese biomedical patents**.
 
+## Abstract
+There is a large body of work on Biomedical Entity Recognition (Bio-NER) for English. There have only been a few attempts addressing NER for Chinese biomedical texts. 
+
+Because of the growing amount of Chinese biomedical discoveries being patented, and lack of NER models for patent data, we train and evaluate NER models for the analysis of Chinese biomedical patent data, based on BERT. 
+
+By doing so, we show the value and potential of this domain-specific NER task. For the evaluation of our methods we built our own Chinese biomedical patents NER dataset, and our optimized model achieved an F1 score of 0.54$\pm$0.15. Further biomedical analysis indicates that our solution can help detecting meaningful biomedical entities and novel gene--gene interactions, with limited labeled data, training time and computing power.
+
+
 ## Configuration
 Enviornment files in `/env`.  
 Configure the python environment using:
