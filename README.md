@@ -57,7 +57,7 @@ The `/final_trained` is the NER model trained on our whole labeled dataset `cbp_
 
 Our methods are based on pre-trained BERT models. We designed and implemented three different learning methods to train our NER models using our built datasets:
  - **Supervised original**: fine-tuning all weights (BERT model layers plus NER layer) using a relatively small learning rate 5*10^(-5), with our labeled dataset;
- - **LM mixed fine-tuning**: first tune the weights of the BERT language model layers with the unlabeled dataset; then repeat the supervised original learning step; 
+ - **LM mixed fine-tuning**: first tune the weights of the BERT language model layers with the unlabeled dataset; then repeat the supervised original learning step (Finally optimal one in our experiments, further predictions and released models are all based on this model); 
  - **PartBERT+CRF fine-tuning**: fine-tune the weights of part of the BERT model (last 4 layers) plus an added CRF layer, trained with our labeled dataset.
 
 ![Three different learning methods](learning_methods.png)
