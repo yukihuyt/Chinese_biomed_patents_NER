@@ -1,13 +1,13 @@
 # Chinese Biomedical Patents NER
 
-This repository includes the built datasets, source codes and trained models of our study **Named Entity Recognition for Chinese biomedical patents**.
+This repository includes the built datasets, source codes and trained models of our study **Named Entity Recognition for Chinese biomedical patents**. （Paper accepted by COLING 2020）
 
 ## Abstract
 There is a large body of work on Biomedical Entity Recognition (Bio-NER) for English. There have only been a few attempts addressing NER for Chinese biomedical texts. 
 
 Because of the growing amount of Chinese biomedical discoveries being patented, and lack of NER models for patent data, we train and evaluate NER models for the analysis of Chinese biomedical patent data, based on BERT. 
 
-By doing so, we show the value and potential of this domain-specific NER task. For the evaluation of our methods we built our own Chinese biomedical patents NER dataset, and our optimized model achieved an F1 score of 0.54$\pm$0.15. Further biomedical analysis indicates that our solution can help detecting meaningful biomedical entities and novel gene--gene interactions, with limited labeled data, training time and computing power.
+By doing so, we show the value and potential of this domain-specific NER task. For the evaluation of our methods we built our own Chinese biomedical patents NER dataset, and our optimized model achieved an F1 score of 0.54±0.15. Further biomedical analysis indicates that our solution can help detecting meaningful biomedical entities and novel gene--gene interactions, with limited labeled data, training time and computing power.
 
 
 ## Configuration
@@ -24,7 +24,26 @@ conda env create -f ./env/cbp.yml
 
 ## Datasets
 The `/data` contains all our built datasets.  
-Detailed information see [dataset information](./data/README.md)
+<details><summary>Detailed dataset information</summary>
+<p>
+
+#### Labeled dataset
+The derictory `cbp_gold` contains our finally built gold standard dataset (humanly labeled), which are `cbp_gold_total.bio` (original version) and `no_long_cbp_gold_total.bio` (no-long-sentences version). This gold standard dataset contains 5,813 sentences and 2,267 unique named entities, built from 21 Chinese biomedical patents.
+It was annotated with IOB format labels and we only annotated out gene/protein/disease entities. In the data document, each line only contains one character and its corresponding IOB tag.
+
+Under the directory `cbp_gold`, there are also 5 sub-directories (from `0` to `4`), which contain the detailed evaluation sets we built from our original gold standard dataset and were finally applied in all our NER evaluation experiments. Under each sub-directory, the filename suffix indicates whether it is train, test or dev set, while the prefix indicates whether it contains long sentences. (file with prefix `no_long` does not contain sentences longer than 500 characters, exceeded length sentences will be split into sub-sentences.)
+
+#### Unlabeled datasets
+`BC` and `HG` are two unlabeled Chinese Biomedical Patents datasets, which were both retrieved from Google Patents Databases. `BC` contains patents matching the query "人类AND基因" ('human AND gene'), from 1st January 2009 to 1st January 2019 with patent code starting with 'CN'. `HG` contains patents matching the query  "乳腺癌AND生物标记物" ('breast cancer AND biomarker'), from 1st December 2012 to 1st January 2019 with patent code starting with 'CN' as well. After some filtering and cleaning steps (detailed steps see our paper), `BC` and `HG` datasets finally contain 2,659 and 53,007 patents, respectively.
+
+The `part_BC` and `part_HG` were part of both datasets, which contain 100 and 10,000 patents randomly selected from `BC` and `HG` datasets, respectively. They were processed as the suggested format for the transformers frame we applied and were finally used in our Language Model fine-tuning experiments (Mixed_LM).
+
+Here we would not upload these unlabeled datasets since they are all relatively large and are not necessary if you just want to reproduce our NER results or use our trained models. 
+
+Further information, like statistics of and pre-processing steps we applied on all our built dataset, can be found in our paper. 
+
+</p>
+</details>
 
 ## Models
 Here we release 3 models generated during our experiments which you can use to either reproduce our results or run your own customized experiments.
@@ -32,6 +51,20 @@ Here we release 3 models generated during our experiments which you can use to e
 The `/partHG_1epoch` is the bert-base-chinese model been fine-tuned on our large unlabeled dataset `HG` for 1 epoch, while `/partBC_30epochs` on unlabeled dataset `BC` for 30 epochs. These 2 fine-tuned lanaguage model can be used to run your customized NER experiments or be loaded to continue fine-tuning on more data/epochs.
 
 The `/final_trained` is the NER model trained on our whole labeled dataset `cbp_gold`, using the fine-tuned language model `/partHG_1epoch`. It is also our final selected model to generate predictions on unlabeled dataset for further analysis. This NER model is possible to be directly applied on new data to generate NER predictions.
+
+<details><summary>Detailed model information</summary>
+<p>
+
+Our methods are based on pre-trained BERT models. We designed and implemented three different learning methods to train our NER models using our built datasets:
+ - **Supervised original**: fine-tuning all weights (BERT model layers plus NER layer) using a relatively small learning rate ($5*10^{-5}$), with our labeled dataset;
+ - **LM mixed fine-tuning**: first tune the weights of the BERT language model layers with the unlabeled dataset; then repeat the supervised original learning step; 
+ - **PartBERT+CRF fine-tuning**: fine-tune the weights of part of the BERT model (last 4 layers) plus an added CRF layer, trained with our labeled dataset.
+
+![Three different learning methods](learning_methods.png)
+
+
+</p>
+</details>
 
 ## Run experiments
 The directories `/Supervised_Original`, `/BERT_LM_mixed` and `/partBERT_CRF` contain the source codes of corresponding training methods described in our paper.
