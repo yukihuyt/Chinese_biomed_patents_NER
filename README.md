@@ -1,6 +1,6 @@
 # Chinese Biomedical Patents NER
 
-This repository includes the built datasets, source codes and trained models of our study **Named Entity Recognition for Chinese biomedical patents**. (Paper in reviewing by COLING 2020)
+This repository includes the built datasets, source codes and trained models of our study **Named Entity Recognition for Chinese biomedical patents**. (Paper accepted by [COLING 2020](https://coling2020.org/pages/accepted_papers_main_conference))
 
 ## Abstract
 There is a large body of work on Biomedical Entity Recognition (Bio-NER) for English. There have only been a few attempts addressing NER for Chinese biomedical texts. 
