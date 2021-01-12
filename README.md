@@ -88,7 +88,7 @@ For `/BERT_LM_mixed` method, first you need to download the bin files of each mo
 * Download [partHG_1epoch_bin](https://pan.baidu.com/s/1-ev7b3pDx_JnAU2pZ1V10w) under `./models/partHG_1epoch`
 * Download [partBC_30epochs_bin](https://pan.baidu.com/s/1EQ61sQ-9VkX5PZ3VaPhi7g) under `./models/partBC_30epochs`
 * Download [final_trained_bin](https://pan.baidu.com/s/1B9iZ7S2OjqiQ211qR_jQ4A) under `./models/final_trained` 
-（提取码：1137）
+* 提取码均为：1137
 
 </p>
 </details>
